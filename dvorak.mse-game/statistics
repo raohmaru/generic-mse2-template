@@ -1,0 +1,10 @@
+﻿
+############################################################## Statistics dimensions
+
+statistics dimension:
+	name: keywords
+	position hint: 1000
+	script: keyword_usage(unique:true)
+	show empty: false
+	split list: true
+	icon: stats/keywords.png

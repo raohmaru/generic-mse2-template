@@ -1,0 +1,79 @@
+﻿############################################################## We have keywords?
+
+has keywords: true
+
+############################################################## Keyword mode
+
+keyword mode:
+	name: core
+	description: Core set keywords
+keyword mode:
+	is default: true
+	name: custom
+	description: Custom keywords
+
+############################################################## Keyword parameter types
+
+# By pichoro and bunnierein
+keyword parameter type:
+	name: number
+	match: [XYZ0-9]+
+	refer script:
+		name: normal
+		description: (1,2,3)
+		script: \{{input}\}
+	refer script:
+		name: as words
+		description: (one, two, three)
+		script: \{english_number({input})\}
+	refer script:
+		name: as words, use "a" for 1
+		description: (a, two, three)
+		script: \{english_number_a({input})\}
+	refer script:
+		name: as words, use "" for 1
+		description: (, two, three)
+		script: \{english_number_multiple({input})\}
+	refer script:
+		name: as ordinal words
+		description: (first, second, third)
+		script: \{english_number_ordinal({input})\}
+
+keyword parameter type:
+	name: name
+	match: [^(.:;\n—]+
+	refer script:
+		name: normal
+		description: No changes made.
+		script: \{{input}\}
+	refer script:
+		name: singular
+		description: Removes plurality from words.
+		script: \{english_singular({input})\}
+	refer script:
+		name: separate words with "and/or"
+		description: Changes spaces to " and/or ". "Elf Warrior" becomes "Elf and/or Warrior".
+		script: \{separate_words(spacer: " and/or ", {input})\}
+	refer script:
+		name: separate words with "or"
+		description: Changes spaces to " or ". "Elf Warrior" becomes "Elf or Warrior".
+		script: \{separate_words(spacer: " or ", {input})\}
+
+keyword parameter type:
+	name: prefix
+	description: Prefix for things like "<something>walk"
+	optional: false
+	match: [A-Z][A-Z,a-z’ ]*
+	example: Forest
+
+keyword parameter type:
+	name: a
+	match: [an?]*
+
+############################# Core keywords
+
+#keyword:
+#	keyword: Flying
+#	match: Flying
+#	mode: core
+#	reminder: This creature can’t be blocked except by creatures with flying or reach.

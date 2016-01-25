@@ -1,0 +1,44 @@
+﻿############################################################## Auto replace
+
+# Do we need categories?
+#auto replace category: text box
+#auto replace category: copyright
+#auto replace category: everywhere
+auto replace:
+	match: (C)
+	replace: ©
+auto replace:
+	match: AE
+	replace: Æ
+	whole word: false
+auto replace:
+	match: TM
+	replace: ™
+	whole word: false
+auto replace:
+	match: --
+	replace: —
+auto replace:
+	# note the spaces
+	match:
+		 - 
+	replace:
+		 — 
+auto replace:
+	match: BOT
+	replace: At the beginning of your turn
+auto replace:
+	match: EOT
+	replace: At the end of your turn
+auto replace:
+	match: UEOT
+	replace: until end of turn
+auto replace:
+	match: SYD
+	replace: shuffle your deck
+auto replace:
+	match: ~
+	replace: CARDNAME
+auto replace:
+	match: '
+	replace: ’

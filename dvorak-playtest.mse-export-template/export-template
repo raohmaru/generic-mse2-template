@@ -1,0 +1,102 @@
+﻿mse version: 2.0.0
+game: dvorak
+short name: Playtest Spoiler
+full name: Visual spoiler for printing
+installer group: Dvorak/Export/Spoiler
+icon: preview.png
+create directory: true
+
+version: 2014-6-8
+depends on: dvorak.mse-game 2014-4-12
+
+############################################################## Card fields
+
+#option field:
+#	type: boolean
+#	name: images
+#	initial: no
+
+option field:
+	type: choice
+	name: corner value
+	choice: none
+	choice: after name
+	choice: top right
+	initial: top right
+
+############################################################## Script
+
+script:
+	# Write a single card
+	write_card := {
+	
+	#if options.images then write_image_file(card, file:"{ directory }cards/card_{ card.number }.jpg", width:750)
+	
+		"<table class=\"card\" cellpadding=\"0\" cellspacing=\"11\" border=\"0\">
+			<tr>
+				<td class=\"cardtop\">
+					<table class=\"cardname\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+						<tr>
+							<td class=\"cardnameside\" style=\"border-color: { card.color };\">
+								<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+									<tr>
+										<td>{ to_html(card.name) + (if card.value != "" and options.corner_value == "after name" then " (" + card.value + ")") }</td>
+										{ if card.value != "" and options.corner_value == "top right" then
+											"<td class=\"cornervalue\"><div style=\"background: { card.color };\">{ card.value }</div></td>"
+										}
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td style=\"background: { card.color }; border-color: { card.color };\" class=\"category\">{ to_html(card.type) }</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class=\"cardbottom\">
+					<table class=\"carddesc\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">
+						<tr>
+							<td>{ to_html(card.rule_text) }</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		"
+	}
+	
+	# Write all cards of the set
+	write_cards := {
+		"<table class='page' border=0 cellspacing=0 cellpadding=0><tr><td>
+		" +
+		(for each i:card in sort_list(cards, order_by: {input.number}) do
+			( num := i mod 9
+			  if num == 0 then (
+				"
+				</tr></td></table>
+				<table class='page' border=0 cellspacing=0 cellpadding=0><tr><td>"
+			  )
+			  else ""
+			)
+			+ write_card()
+		)
+		+ "
+		</tr></td></table>"
+	}
+	
+	# Set definition XML
+	html := "<html>
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
+		<title>{ set.title }</title>
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"{ copy_file("style.css") }\" media=\"all\">
+	</head>
+	<body>
+		{ write_cards(cards: cards) }
+	</body>
+	</html>"
+	
+	write_text_file(html, file:"index.html")
+	

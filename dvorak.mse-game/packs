@@ -1,0 +1,18 @@
+﻿
+############################################################## Card pack types
+
+pack type:
+	name: single card
+	filter: true
+
+############################################################## Card packs
+
+pack type:
+	name: booster pack
+	item:
+		name: single card
+		amount: 15
+
+pack type:
+	name: additional card
+	item: single card

@@ -1,0 +1,180 @@
+﻿############################################################## Card fields
+############################# Background stuff
+card field:
+	type: choice
+	name: card type
+	choice: action
+	choice: thing
+	choice: rule
+	default: card_type()
+	show statistics: false
+	description: The type of the card
+
+card field:
+	type: color
+	name: color
+	default: rgb(180,180,180)
+	choice:
+		name: Thing
+		color: rgb(34,103,206)
+	choice:
+		name: Action
+		color: rgb(140,0,0)
+	choice:
+		name: Reaction
+		color: rgb(29,129,86)
+	show statistics: false
+	description: The color of the card
+
+############################# Name line
+card field:
+	type: text
+	name: name
+	identifying: true
+	multi line: true
+	show statistics: false
+	card list visible: true
+	card list name: Name
+	card list column: 1
+	card list width: 150
+	description: The name of the card
+
+card field:
+	type: text
+	name: value
+	card list visible: true
+	card list name: Value
+	card list column: 2
+	card list alignment: right
+	card list width: 50
+	position hint: 4
+	description: The value of the card
+	icon: stats/casting_cost.png
+
+card field:
+	type: text
+	name: super type
+	script: super_type_filter(value)
+	position hint: 2
+	icon: stats/creature_type.png
+
+card field:
+	type: text
+	name: sub type
+	script: sub_type_filter(value)
+	position hint: 3
+	icon: stats/creature_class.png
+
+card field:
+	type: text
+	name: type
+	save value: false
+	script:
+		# Either just supertype, or subtype - supertype
+		combined_editor(
+			field1: card.super_type,
+			separator: " — ",
+			field2: card.sub_type,
+			soft_before_empty: true,
+			hide_when_empty:   true
+		)
+	card list visible: true
+	card list name: Type
+	card list column: 3
+	card list width: 150
+	position hint: 1
+	description: The type of this card, type - to go the sub type
+	icon: stats/card_type.png
+
+############################# Image
+card field:
+	type: image
+	name: image
+	show statistics: false
+	description: The image of the card
+
+############################# Symbol
+card field:
+	type: choice
+	name: symbol
+	choice: normal
+	choice: inverted
+	show statistics: false
+	choice colors:
+		normal: rgb(33,33,33)
+		inverted: rgb(224,224,224)
+	description: The symbol of the set, to edit the symbol switch to the 'set info' tab
+
+############################# Edition and Card ID
+card field:
+	type: text
+	name: number
+	script: set.code + "-" + set.language + card_number()
+	card list visible: true
+	card list name: #
+	card list column: 4
+	card list width: 50
+	editable: false
+	show statistics: false
+
+############################# Text box
+card field:
+	type: text
+	name: rule text
+	script: text_filter(input: value, card_name: card.name)
+	multi line: true
+	show statistics: false
+	description: The rules text for the card
+
+card field:
+	type: text
+	name: flavor text
+	script: flavor_text_filter(value)
+	multi line: true
+	show statistics: false
+	description: The flavor text for the card
+
+card field:
+	type: text
+	name: text
+	multi line: true
+	save value: false
+	show statistics: false
+	script:
+		combined_editor(field1: card.rule_text, separator: "<line>\n</line>", field2: card.flavor_text)
+	description: The rules and flavor text for the card; use up and down arrows to switch
+
+############################# Copyright stuff
+card field:
+	type: text
+	name: gamecode
+	show statistics: false
+	description: Additional information
+
+card field:
+	type: text
+	name: copyright
+	default: set.copyright
+	show statistics: false
+	description: Copyright of this card, the default value can be changed on the 'set info' tab
+	
+############################# Other
+card field:
+	type: text
+	name: time modified
+	save value: false
+	show statistics: false
+	script: card.time_modified
+	card list name: modified
+	card list column: 100
+	description: Time modified of the card
+	
+card field:
+	type: text
+	name: time created
+	save value: false
+	show statistics: false
+	script: card.time_created
+	card list name: created
+	card list column: 101
+	description: Time created of the card

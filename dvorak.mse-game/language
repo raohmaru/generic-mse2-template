@@ -1,0 +1,40 @@
+
+
+# Language specific strings
+languages := [
+	English: [
+		code              : "en",
+		spellcheck_code   : "en_us",
+		subtype_separator : " ",
+		is_thing          : match@(match: "(?i)Thing"),
+		is_action         : match@(match: "(?i)\\bAction"),
+		is_reaction       : match@(match: "(?i)Reaction"),
+		is_coretype       : match@(match: "(?ix)^(Thing|Action|Reaction)$"),
+		action_keyword    : "(Rea|A)ction"
+	],	
+	
+	Français: [
+		code              : "fr",
+		spellcheck_code   : "", # TODO: get dictionary
+		subtype_separator : " ",
+		is_thing          : match@(match: "(?i)Chose"),
+		is_action         : match@(match: "(?i)Action"),
+		is_reaction       : match@(match: "(?i)\\bReaction"),
+		is_coretype       : match@(match: "(?ix)^(Chose|Action|Reaction)$"),
+		action_keyword    : "(Rea|A)ction"
+	],	
+	
+	Español: [
+		code              : "es",
+		spellcheck_code   : "", # TODO: get dictionary
+		subtype_separator : " ",
+		is_thing          : match@(match: "(?i)Cosa"),
+		is_action         : match@(match: "(?i)\\b(Accion|Acción)"),
+		is_reaction       : match@(match: "(?i)Reaccion|Reacción"),
+		is_coretype       : match@(match: "(?ix)^(Cosa|Accion|Acción|Reaccion|Reacción)$"),
+		action_keyword    : "(Rea|A)cción"
+	]
+]
+
+# The selected language
+language := { languages[set.card_language] or else language.English }

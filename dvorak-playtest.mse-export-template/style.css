@@ -1,0 +1,84 @@
+body {
+	margin: 0;
+	font-family: trebuchet ms,arial;
+	color: #000;
+	background: #fff;
+}
+.page {
+	page-break-before: always;
+}
+table.card {
+	float: left;
+	border-top: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+}
+table.card:nth-child(3n+1) { /* Starting at 1, every third child */
+	clear: left;
+}
+table.card:nth-child(3n),  /* Every third child */
+table.card:last-child {
+	border-right: 1px solid #bbb;
+}
+table.card:nth-last-child(-n+3) {  /* Last three childs */
+	border-bottom: 1px solid #bbb;
+}
+td.cardtop {
+	vertical-align: top;
+}
+	table.cardname {
+		height: 2.4cm;
+		width: 5.5cm;
+	}
+		td.cornervalue {
+			width: 0.7cm;
+			vertical-align: top;
+		}
+			td.cornervalue > div {
+				float: right;
+				padding: 3px 6px;
+				color: #FFF;
+			}
+		td.cardnameside {
+			padding: 4px;
+			border: 1px solid #000;
+		}
+			td.cardnameside > table {
+				width: 100%;
+				height: 100%;
+			}
+			td.cardnameside td {
+				font-size: 17px;
+				line-height: 1.1;
+				font-weight: bold;
+				text-align: center;
+			}
+		td.category {
+			font-size: 14px;
+			height: 15px;
+			color: #FFF;
+			text-align: center;
+			border: 1px solid #000;
+		}
+td.cardbottom {
+	height: 5.1cm;
+	text-align: center;
+	vertical-align: bottom;
+}
+	table.carddesc {
+		width: 5.5cm;
+		height: 3cm;
+	}
+		table.carddesc td {
+			padding: 4px;
+			vertical-align: middle;
+			font-size: 13px;
+			line-height: 1.3;
+			border: 1px solid #666;
+		}
+	td.cardattr {
+		display: none;
+		width: 5.5cm;
+		font-size: 10px;
+		text-align: center;
+		color: #999999;
+	}

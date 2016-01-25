@@ -1,0 +1,34 @@
+﻿mse version: 2.0.0
+short name: Dvorak
+full name: Dvorak
+installer group: Dvorak/Game Files
+icon: back.png
+position hint: 13
+
+version: 2014-4-12
+
+# By: Raohmaru
+# Based on the original Dvorak template by Zaratustra and updated by Pichoro
+
+############################################################## The script
+
+init script: include file: script
+
+############################################################## Lots of lists
+
+include file: card_fields
+include file: set_fields
+include file: statistics
+include file: packs
+include file: keywords
+include file: word_lists
+include file: add_cards_scripts
+include file: auto_replace
+
+############################################################## Other stuff
+
+card list color script:
+	if      is_thing()    then rgb(0,0,255)
+	else if is_action()   then rgb(215,0,0)
+	else if is_reaction() then rgb(0,195,0)
+	else                       rgb(0,0,0)

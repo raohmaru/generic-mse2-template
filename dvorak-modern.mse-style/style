@@ -1,0 +1,690 @@
+mse version: 2.0.0
+game: dvorak
+short name: Modern
+full name: Modern
+installer group: Dvorak/Modern style
+icon: card-sample.png
+position hint: 003
+
+version: 2014-4-12
+depends on: dvorak.mse-game 2014-4-12
+depends on: dvorak-none.mse-symbol-font 2014-4-12
+
+card background: white
+card width: 750
+card height: 1046
+card dpi: 300
+
+############################################################## Extra scripts
+
+init script:
+	# constants
+	VALUE_HEIGHT := 66
+	TEXT_BOX_OFFSET_Y := 58
+
+	to_number_or_def := {
+		if input == "" then default
+		else to_number(input) or else default
+	}
+	name_fsz      := to_number_or_def@(styling.name_font_size, default:34)
+	value_fsz     := to_number_or_def@(styling.value_font_size, default:30)
+	type_fsz      := to_number_or_def@(styling.type_font_size, default:20)
+	text_fsz      := to_number_or_def@(styling.text_font_size, default:24)
+	copyright_fsz := to_number_or_def@(styling.copyright_font_size, default:12)
+	image_height  := to_number_or_def@(styling.image_height, default:450)
+	
+	math_min := {
+		if value1 > value2 then value1
+		else value2
+	}
+	math_max := {
+		if value1 < value2 then value1
+		else value2
+	}
+	
+	name_width := {
+		if      card.value == "" or input == "center" then 700
+		else if card_style.value.content_width <= 50 then 625
+		else    670 - card_style.value.content_width
+	}	
+	value_width := {
+		if card.value != "" then math_min(value1:card_style.value.content_width + 22, value2:VALUE_HEIGHT)
+	}
+	value_height := {
+		if styling.layout != "name, image, type" and value_fsz() > 30 then
+			math_max(value1:value_fsz()+20, value2:110) + input - 50
+		else input
+	}
+	
+	name_alignment := {
+		"shrink-overflow middle " + 
+		if styling.name_align == "center if no corner value" then (
+			if card.value == "" then "center" else "left"
+		)
+		else styling.name_align
+	}	
+	text_alignment := {
+		styling.text_vertical_align + 
+		if styling.text_align == "center short text" then (
+			if (not contains(match:"\n", card.rule_text) and
+			card.flavor_text == "<i-flavor></i-flavor>" and
+			card_style.text.content_lines <= 2)
+			then " center"
+		)
+		else " " + styling.text_align
+	}
+	
+	image_top := {
+		if styling.layout == "name, image, type" then 134
+		else if styling.layout == "name, text, image" then (
+			(if set.Extended_Card_Info then 972 else 992)
+			- image_height()
+		)
+		else 190
+	}
+	
+	text_top := {
+		if styling.layout == "name, text, image" then 190 + input - TEXT_BOX_OFFSET_Y
+		else
+			image_top() + image_height() + input -
+			(if styling.layout == "name, type, image" then 40)
+	}
+	text_bottom := {
+		if styling.layout == "name, text, image" then
+			image_top() + input - 44
+		else
+			(if set.Extended_Card_Info then 950 else 970) + input
+	}
+
+############################################################## Set info fields
+set info style:	
+	symbol:
+		max aspect ratio: 2.5
+		variation:
+			name: normal
+			border radius: 0.08
+			fill type: solid
+			fill color:   rgb(0,0,0)
+			border color: rgba(255,255,255,0)
+		variation:
+			name: inverted
+			border radius: 0.08
+			fill type: solid
+			fill color:   rgb(255,255,255)
+			border color: rgba(0,0,0,0)
+
+############################################################## Extra style options
+############################# Typography
+styling field:
+	type: text
+	name: name font
+	description: A valid font name installed in your system used for the card name. E.g. Arial Black
+	
+styling field:
+	type: text
+	name: name font size
+	description: Font size for the card name. Default is 34
+
+styling field:
+	type: text
+	name: value font
+	description: A valid font name installed in your system used for the corner value. E.g. Wingdings
+	
+styling field:
+	type: package choice
+	name: value symbol font
+	match: dvorak-*.mse-symbol-font
+	initial: dvorak-none.mse-symbol-font
+	description: Symbol font size for the corner value
+	
+styling field:
+	type: text
+	name: value font size
+	description: Font size for the corner value. Default is 30
+
+styling field:
+	type: text
+	name: type font
+	description: A valid font name installed in your system used for the card type. E.g. Verdana
+	
+styling field:
+	type: text
+	name: type font size
+	description: Font size for the card type. Default is 20
+
+styling field:
+	type: text
+	name: text font
+	description: A valid font name installed in your system used for the card text E.g. Times New Roman
+	
+styling field:
+	type: package choice
+	name: text symbol font
+	match: dvorak-*.mse-symbol-font
+	initial: dvorak-none.mse-symbol-font
+	description: Symbol font size for the card text
+	
+styling field:
+	type: text
+	name: text font size
+	description: Font size for the card text. Default is 24
+
+styling field:
+	type: text
+	name: copyright font
+	description: A valid font name installed in your system used for the copyright text E.g. Tahoma
+	
+styling field:
+	type: text
+	name: copyright font size
+	description: Font size for the copyright text. Default is 12
+	
+styling field:
+	type: info
+	name: Divider
+	
+############################# Text alignment
+styling field:
+	type: choice
+	name: name align
+	description: Horizontal alignment of the name ("center if no corner value" means align to left if card has a value defined)
+	choice: left
+	choice: center
+	choice: center if no corner value
+	choice: right
+	initial: center
+	
+styling field:
+	type: choice
+	name: type align
+	description: Horizontal alignment of the card type
+	choice: left
+	choice: center
+	choice: right
+	initial: center
+	
+styling field:
+	type: choice
+	name: text align
+	description: Horizontal alignment of the rule text (center short text only means only on one-line cards with no flavor text)
+	choice: left
+	choice: center
+	choice: center short text
+	choice: right
+	initial: left
+	
+styling field:
+	type: choice
+	name: text vertical align
+	description: Vertical alignment of the rule text
+	choice: top
+	choice: middle
+	choice: bottom
+	initial: middle
+
+############################# Colors
+styling field:
+	type: color
+	name: font color
+	description: What colour should be used for the text?
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+
+styling field:
+	type: color
+	name: text color
+	description: What colour should be used for the card rules?
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+
+styling field:
+	type: color
+	name: value color
+	description: What colour should be used for the corner value?
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+		
+############################# Boxes
+styling field:
+	type: choice
+	name: text box
+	description: Show a box below the rule text
+	initial: none
+	choice: none
+	choice: solid box
+	choice: border box
+
+styling field:
+	type: choice
+	name: value box
+	description: Show a box below the corner value
+	initial: none
+	choice: none
+	choice: solid box
+	choice: border box
+	
+styling field:
+	type: info
+	name: Divider
+
+############################# Layout and borders
+styling field:
+	type: choice
+	name: layout
+	description: Change the layout of the card
+	initial: name, image, type
+	choice: name, type, image
+	choice: name, image, type
+	choice: name, text, image
+	
+styling field:
+	type: text
+	name: image height
+	description: Set the height of the image in pixels. Default is 450
+
+styling field:
+	type: boolean
+	name: image border
+	description: Show a border around the image
+	initial: no
+
+styling field:
+	type: boolean
+	name: background image
+	description: Use a background image instead of a solid color
+	initial: no
+
+styling field:
+	type: boolean
+	name: show border
+	description: Show card border
+	initial: no
+			
+styling field:
+	type: package choice
+	name: overlay
+	description: Should there be an overlay applied, such as foil?
+	match: dvorak-overlay-*.mse-include
+	required: false
+
+############################# Styling choices
+styling style:
+	name align:
+		render style: both
+		choice images:
+			left:                      /dvorak.mse-game/icons/text-left.png
+			center:                    /dvorak.mse-game/icons/text-center.png
+			center if no corner value: /dvorak.mse-game/icons/text-center.png
+			right:                     /dvorak.mse-game/icons/text-right.png
+			
+	type align:
+		render style: both
+		choice images:
+			left:                  /dvorak.mse-game/icons/text-left.png
+			center:                /dvorak.mse-game/icons/text-center.png
+			right:                 /dvorak.mse-game/icons/text-right.png
+	
+	text align:
+		render style: both
+		choice images:
+			left:              /dvorak.mse-game/icons/text-left.png
+			center:            /dvorak.mse-game/icons/text-center.png
+			center short text: /dvorak.mse-game/icons/text-center-short.png
+			right:             /dvorak.mse-game/icons/text-right.png
+			
+	text vertical align:
+		render style: both
+		choice images:
+			top:    /dvorak.mse-game/icons/align-top.png
+			middle: /dvorak.mse-game/icons/align-middle.png
+			bottom: /dvorak.mse-game/icons/align-bottom.png
+			
+	text box:
+		render style: both
+		choice images:
+			solid box:  /dvorak.mse-game/icons/box-solid.png
+			border box: /dvorak.mse-game/icons/box-border.png
+			
+	value box:
+		render style: both
+		choice images:
+			solid box:  /dvorak.mse-game/icons/box-solid.png
+			border box: /dvorak.mse-game/icons/box-border.png
+			
+	layout:
+		render style: both
+		choice images:
+			name, type, image: /dvorak.mse-game/icons/layout-1.png
+			name, image, type: /dvorak.mse-game/icons/layout-2.png
+			name, text, image: /dvorak.mse-game/icons/layout-3.png
+
+############################################################## Card fields
+card style:
+	############################# Background
+	color:
+		left: 0
+		top: 0
+		width:	750
+		height:	1046
+		#radius: 24
+		z index: -2
+	
+	############################# Name line
+	name:
+		left:   53
+		top :   50
+		right:  {name_width(styling.name_align)}
+		height: {VALUE_HEIGHT}
+		alignment: script: name_alignment()
+		z index: 2
+		font:
+			name: {styling.name_font}
+			size: {name_fsz()}
+			color: {styling.font_color}
+			weight: bold
+		line height soft: 0.8
+		line height hard: 0.8
+		line height line: 0.8
+		line height hard max: 1.0
+		line height line max: 1.0
+	
+	value:
+		right: 692
+		top: 58
+		width: {math_min(value1:50, value2:card_style.value.content_width+6)}
+		height: {value_height(50)}
+		z index: 2
+		padding right: {if card_style.value.content_width <= VALUE_HEIGHT then 0 else 4}
+		alignment: {if card_style.value.content_width <= VALUE_HEIGHT then "center middle" else "right middle"}
+		font:
+			name: {styling.value_font}
+			size: {value_fsz()}
+			color: {styling.value_color}
+			weight: bold
+		symbol font:
+			name: {styling.value_symbol_font}
+			size: {value_fsz()}
+	
+	############################# Image
+	image:
+		left:	53
+		top: script: image_top()
+		width: 645
+		height:	{image_height()}
+		z index: 1
+	
+	############################# Text box	
+	type:
+		left: {if set.Extended_Card_Info and styling.layout == "name, image, type" then 100 else 53}
+		top : {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 135}
+		height: 45
+		right: {if set.Extended_Card_Info and styling.layout == "name, image, type" then 650 else name_width(styling.type_align)}
+		z index: 2
+		alignment: {styling.type_align + " middle shrink-overflow"}
+		font:
+			name: {styling.type_font}
+			size: {type_fsz()}
+			color: {styling.font_color}
+			
+	text:
+		left: 78
+		top : {text_top(83)}
+		right:  672
+		bottom: {text_bottom(0)}
+		alignment: script: text_alignment()
+		z index: 2
+		font:
+			name: {styling.text_font}
+			size: {text_fsz()}
+			#scale down to: {text_fsz()-4}
+			color: {styling.text_color}
+		symbol font:
+			name: {styling.text_symbol_font}
+			size: {text_fsz()}
+		line height soft: 1.0
+		line height hard: 1.4
+		line height line: 1.6
+		line height hard max: 1.5
+		line height line max: 1.7
+	
+	############################# Symbol & Edition and Card ID	
+	symbol:
+		top : {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 976}
+		left: 53
+		width: {if styling.layout == "name, image, type" then 42 else 36}
+		height: {if styling.layout == "name, image, type" then 42 else 36}
+		z index: 1
+		render style: image
+		alignment: middle left
+		choice images:
+			# Images based on the set symbol
+			normal: script: symbol_variation(symbol: set.symbol, variation: "normal")
+			inverted: script: symbol_variation(symbol: set.symbol, variation: "inverted")
+		visible: {set.Extended_Card_Info}
+			
+	number:
+		top : {if styling.layout == "name, text, image" then image_top() - 17 else image_top() + image_height() + (if styling.layout == "name, image, type" then 4 else 2)}
+		right: 697
+		width: 120
+		height: 20
+		z index: 2
+		alignment: top right
+		font:
+			name: {styling.copyright_font}
+			size: 11
+			color: {styling.font_color}
+		visible: {set.Extended_Card_Info}
+	
+	############################# Copyright stuff
+	gamecode:
+		left: {if styling.layout == "name, image, type" then 53 else 99}
+		top : 980
+		width: {if styling.layout == "name, image, type" then 318 else 256}
+		height: 22
+		alignment: left middle shrink-overflow
+		z index: 2
+		font:
+			name: {styling.copyright_font}
+			size: {copyright_fsz()}
+			color: {styling.font_color}
+		visible: {set.Extended_Card_Info}
+	
+	copyright:
+		right: 697
+		top: 980
+		width: 318
+		height: 22
+		z index: 2
+		alignment: right middle shrink-overflow
+		font: 
+			name: {styling.copyright_font}
+			size: {copyright_fsz()}
+			color: {styling.font_color}
+		visible: {set.Extended_Card_Info}
+
+############################################################## Extra card fields
+extra card field:
+	type: image
+	name: bg image
+	show statistics: false
+	save value: true
+	description: Double click to set a backround image
+	
+extra card field:
+	type: color
+	name: border color
+	default: rgba(0,0,0,0)
+	default name: Default
+	choice:
+		name: white
+		color: rgb(255,255,255)
+	choice:
+		name: silver
+		color: rgb(128,128,128)
+	choice:
+		name: gold
+		color: rgb(200,180,0)
+	show statistics: false
+	save value: true
+	description: Border color 
+	
+extra card field:
+	type: color
+	name: text solid box
+	default: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	show statistics: false
+	save value: true
+	description: Click to change the text background color
+	
+extra card field:
+	type: color
+	name: text border box
+	default: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	show statistics: false
+	save value: true
+	description: Click to change the border color of the text box
+	
+extra card field:
+	type: color
+	name: value solid box
+	default: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	show statistics: false
+	save value: true
+	description: Click to change the value background color
+	
+extra card field:
+	type: color
+	name: value border box
+	default: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	show statistics: false
+	save value: true
+	description: Click to change the border color of the value box
+	
+extra card field:
+	type: color
+	name: image border
+	default: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+	show statistics: false
+	save value: true
+	description: Click to change the border color of the image
+	
+extra card field:
+	type: choice
+	name: foil layer
+	choice: foil
+	save value: false
+	editable: false
+	
+############################################################## Extra card style
+extra card style:	
+	bg image:
+		left: 24
+		top: 24
+		width:	702
+		height:	{if styling.background_image then 998 else 0}
+		z index: -1
+		visible: {styling.background_image}
+	
+	border color:
+		left: 0
+		top: 0
+		width:	750
+		height:	1046
+		#radius: 24
+		left width:   24
+		right width:  24
+		top width:    24
+		bottom width: 24
+		z index: 0
+		visible: {styling.show_border}
+	
+	text solid box:
+		left: 53
+		top : {text_top(TEXT_BOX_OFFSET_Y)}
+		right:  697
+		bottom: {text_bottom(25)}
+		z index: -1
+		visible: {styling.text_box == "solid box"}
+	
+	text border box:
+		left: 53
+		top : {text_top(TEXT_BOX_OFFSET_Y)}
+		right:  697
+		bottom: {text_bottom(25)}
+		left width:   3
+		right width:  3
+		top width:    3
+		bottom width: 3
+		z index: 0
+		visible: {styling.text_box != "none"}
+	
+	value solid box:
+		right: 700
+		top : 50
+		width: {value_width()}
+		height: {value_height(VALUE_HEIGHT)}
+		z index: -1
+		visible: {card.value != "" and styling.value_box == "solid box"}
+	
+	value border box:
+		right: 700
+		top : 50
+		width: {value_width()}
+		height: {value_height(VALUE_HEIGHT)}
+		left width:   3
+		right width:  3
+		top width:    3
+		bottom width: 3
+		z index: 0
+		visible: {card.value != "" and styling.value_box != "none"}
+	
+	image border:
+		left:	53
+		top: script: image_top()
+		width: 645
+		height:	{image_height()}
+		left width:   3
+		right width:  3
+		top width:    3
+		bottom width: 3
+		z index: 2
+		visible: {styling.image_border}
+	
+	foil layer:
+		left: 0
+		top: 0
+		width: 750
+		height: 1046
+		z index: 10
+		render style: image
+		image: {if styling.overlay == "" then nil else styling.overlay + "/overlay.png"}

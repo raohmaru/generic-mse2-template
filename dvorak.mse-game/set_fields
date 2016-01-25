@@ -1,0 +1,123 @@
+﻿############################################################## Set fields
+set field:
+	type: info
+	name: Set Information
+	
+set field:
+	type: text
+	name: title
+	identifying: true
+	description: The name of the set
+
+set field:
+	type: text
+	name: description
+	multi line: true
+	description: A short description of the set
+
+set field:
+	type: text
+	name: code
+	identifying: true
+	description: An unique set code. Recommended only 3 Capital digits.
+
+set field:
+	type: text
+	name: designer
+	description: Designer(s) of the set
+
+set field:
+	type: text
+	name: copyright
+	description: Copyright information
+
+set field:
+	type: text
+	name: players
+	description: Number of players
+
+set field:
+	type: text
+	name: language
+	description: Language code. Recommended 2 - 3 Captital digits.
+
+set field:
+	type: text
+	name: date
+	description: Date
+
+set field:
+	type: text
+	name: version
+	description: The version of the set
+
+set field:
+	type: symbol
+	name: symbol
+	description: The symbol for this set, double click to edit
+	
+##############################
+set field:
+	type: info
+	name: Defaults and Automation
+	
+set field:
+	type: multiple choice
+	name: automatic reminder text
+	choice: core
+	choice: custom
+	initial: core, custom
+	description: For which kinds of keywords should reminder text be added by default? Note: you can enable/disable reminder text by right clicking the keyword.
+
+set field:
+	type: choice
+	name: card language
+	initial: English
+	choice: English
+	choice: Español
+	choice: Français
+	description: Language for the cards
+
+set field:
+	type: boolean
+	name: mark errors
+	description: Marks errors on cards, for example wording and spelling errors, non unique card names, etc.
+
+set field:
+	type: multiple choice
+	name: sort cards by
+	choice: super type
+	choice: sub type
+	choice: value
+	choice: name
+	initial: name
+	description: Sort card by these fields
+
+set field:
+	type: boolean
+	name: Extended Card Info
+	initial: no
+	description: Show set code, set language with card number and set symbol
+
+############################# Default style
+
+default set style:
+	title:
+		padding left: 2
+		font:
+			size: 16
+	
+	automatic reminder text:
+		render style: checklist
+		direction: vertical
+	
+	sort cards by:
+		render style: checklist
+		direction: vertical
+			
+	card language:
+		render style: both
+		choice images:
+			English:  /dvorak.mse-game/icons/language-en.png
+			Français: /dvorak.mse-game/icons/language-fr.png
+			Español:  /dvorak.mse-game/icons/language-es.png

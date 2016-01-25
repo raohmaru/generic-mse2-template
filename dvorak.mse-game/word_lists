@@ -1,0 +1,17 @@
+﻿
+############################################################## Word lists
+
+word list:
+	name: type
+	word:
+		script: all_super_types()
+		line below: true
+	word: Thing
+	word: Action
+	word: Reaction
+	word: Rule
+
+word list:
+	name: subtype
+	word:
+		script: all_sub_types()

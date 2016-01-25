@@ -1,0 +1,8 @@
+
+add cards script:
+	name: &Horizontal Cycle
+	description: Add 1 card of each type to the set
+	script:
+		[ new_card([super_type: "Thing"])
+		, new_card([super_type: "Action"])
+		]
