@@ -1,6 +1,6 @@
 MSE="D:/Games/Magic the Gathering/MSE2/mse.exe"
-FILE=dvorak.mse-installer
-PKGS=dvorak-black.mse-style dvorak-modern.mse-style dvorak-none.mse-symbol-font dvorak-overlay-rounded-corners.mse-include dvorak-playtest.mse-export-template dvorak-standard.mse-style dvorak.mse-game
+FILE=generic.mse-installer
+PKGS=generic-none.mse-symbol-font generic-normal.mse-style generic-overlay-rounded-corners.mse-include generic-playtest.mse-export-template generic.mse-game
 
 all: clean installer
 	

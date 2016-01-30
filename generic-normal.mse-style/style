@@ -1,14 +1,14 @@
 mse version: 2.0.0
-game: dvorak
-short name: Modern
-full name: Modern
-installer group: Dvorak/Modern style
+game: generic
+short name: Normal
+full name: Normal style
+installer group: Generic/Normal style
 icon: card-sample.png
 position hint: 003
 
 version: 2016-01-30
-depends on: dvorak.mse-game 2016-01-30
-depends on: dvorak-none.mse-symbol-font 2016-01-30
+depends on: generic.mse-game 2016-01-30
+depends on: generic-none.mse-symbol-font 2016-01-30
 
 card background: white
 card width: 750
@@ -133,8 +133,8 @@ styling field:
 styling field:
 	type: package choice
 	name: value symbol font
-	match: dvorak-*.mse-symbol-font
-	initial: dvorak-none.mse-symbol-font
+	match: generic-*.mse-symbol-font
+	initial: generic-none.mse-symbol-font
 	description: Symbol font size for the corner value
 	
 styling field:
@@ -160,8 +160,8 @@ styling field:
 styling field:
 	type: package choice
 	name: text symbol font
-	match: dvorak-*.mse-symbol-font
-	initial: dvorak-none.mse-symbol-font
+	match: generic-*.mse-symbol-font
+	initial: generic-none.mse-symbol-font
 	description: Symbol font size for the card text
 	
 styling field:
@@ -319,7 +319,7 @@ styling field:
 	type: package choice
 	name: overlay
 	description: Should there be an overlay applied, such as foil?
-	match: dvorak-overlay-*.mse-include
+	match: generic-overlay-*.mse-include
 	required: false
 
 ############################# Styling choices
@@ -327,51 +327,51 @@ styling style:
 	name align:
 		render style: both
 		choice images:
-			left:                      /dvorak.mse-game/icons/text-left.png
-			center:                    /dvorak.mse-game/icons/text-center.png
-			center if no corner value: /dvorak.mse-game/icons/text-center.png
-			right:                     /dvorak.mse-game/icons/text-right.png
+			left:                      /generic.mse-game/icons/text-left.png
+			center:                    /generic.mse-game/icons/text-center.png
+			center if no corner value: /generic.mse-game/icons/text-center.png
+			right:                     /generic.mse-game/icons/text-right.png
 			
 	type align:
 		render style: both
 		choice images:
-			left:                  /dvorak.mse-game/icons/text-left.png
-			center:                /dvorak.mse-game/icons/text-center.png
-			right:                 /dvorak.mse-game/icons/text-right.png
+			left:                  /generic.mse-game/icons/text-left.png
+			center:                /generic.mse-game/icons/text-center.png
+			right:                 /generic.mse-game/icons/text-right.png
 	
 	text align:
 		render style: both
 		choice images:
-			left:              /dvorak.mse-game/icons/text-left.png
-			center:            /dvorak.mse-game/icons/text-center.png
-			center short text: /dvorak.mse-game/icons/text-center-short.png
-			right:             /dvorak.mse-game/icons/text-right.png
+			left:              /generic.mse-game/icons/text-left.png
+			center:            /generic.mse-game/icons/text-center.png
+			center short text: /generic.mse-game/icons/text-center-short.png
+			right:             /generic.mse-game/icons/text-right.png
 			
 	text vertical align:
 		render style: both
 		choice images:
-			top:    /dvorak.mse-game/icons/align-top.png
-			middle: /dvorak.mse-game/icons/align-middle.png
-			bottom: /dvorak.mse-game/icons/align-bottom.png
+			top:    /generic.mse-game/icons/align-top.png
+			middle: /generic.mse-game/icons/align-middle.png
+			bottom: /generic.mse-game/icons/align-bottom.png
 			
 	text box:
 		render style: both
 		choice images:
-			solid box:  /dvorak.mse-game/icons/box-solid.png
-			border box: /dvorak.mse-game/icons/box-border.png
+			solid box:  /generic.mse-game/icons/box-solid.png
+			border box: /generic.mse-game/icons/box-border.png
 			
 	value box:
 		render style: both
 		choice images:
-			solid box:  /dvorak.mse-game/icons/box-solid.png
-			border box: /dvorak.mse-game/icons/box-border.png
+			solid box:  /generic.mse-game/icons/box-solid.png
+			border box: /generic.mse-game/icons/box-border.png
 			
 	layout:
 		render style: both
 		choice images:
-			name, type, image: /dvorak.mse-game/icons/layout-1.png
-			name, image, type: /dvorak.mse-game/icons/layout-2.png
-			name, text, image: /dvorak.mse-game/icons/layout-3.png
+			name, type, image: /generic.mse-game/icons/layout-1.png
+			name, image, type: /generic.mse-game/icons/layout-2.png
+			name, text, image: /generic.mse-game/icons/layout-3.png
 
 ############################################################## Card fields
 card style:

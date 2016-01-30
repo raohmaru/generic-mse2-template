@@ -118,6 +118,6 @@ default set style:
 	card language:
 		render style: both
 		choice images:
-			English:  /dvorak.mse-game/icons/language-en.png
-			Français: /dvorak.mse-game/icons/language-fr.png
-			Español:  /dvorak.mse-game/icons/language-es.png
+			English:  /generic.mse-game/icons/language-en.png
+			Français: /generic.mse-game/icons/language-fr.png
+			Español:  /generic.mse-game/icons/language-es.png

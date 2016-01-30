@@ -78,7 +78,7 @@ text_filter :=
 	{ if set.mark_errors then
 		check_spelling(
 			language: lang.spellcheck_code,
-			extra_dictionary: "/dvorak.mse-game/dictionary",
+			extra_dictionary: "/generic.mse-game/dictionary",
 			extra_match: additional_text_words
 		)
 	  else input

@@ -1,7 +1,7 @@
 ﻿mse version: 2.0.0
-short name: Dvorak
-full name: Dvorak
-installer group: Dvorak/Game Files
+short name: Generic
+full name: Generic Card Game
+installer group: Generic/Game Files
 icon: back.png
 position hint: 13
 

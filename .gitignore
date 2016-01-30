@@ -1,5 +1,5 @@
 *.ttf
 *.psd
-dvorak-mana-large.mse-symbol-font
-dvorak.mse-installer
-
+generic-mana-large.mse-symbol-font
+*.mse-installer
+Thumbs.db
