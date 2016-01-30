@@ -1,13 +1,13 @@
 ﻿mse version: 2.0.0
 game: dvorak
 short name: Playtest Spoiler
-full name: Visual spoiler for printing
+full name: Visual spoiler for playtesting
 installer group: Dvorak/Export/Spoiler
 icon: preview.png
 create directory: true
 
-version: 2014-6-8
-depends on: dvorak.mse-game 2014-4-12
+version: 2016-01-30
+depends on: dvorak.mse-game 2016-01-30
 
 ############################################################## Card fields
 

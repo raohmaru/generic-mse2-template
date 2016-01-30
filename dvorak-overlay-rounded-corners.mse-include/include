@@ -1,6 +1,6 @@
 mse version: 2.0.0
-version: 2013-07-20
+version: 2016-01-30
 short name: Rounded corners
-installer group: cfc/overlays/corners
+installer group: dvorak/overlays/corners
 position hint: 1
 icon: icon.png

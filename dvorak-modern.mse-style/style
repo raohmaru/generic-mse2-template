@@ -6,9 +6,9 @@ installer group: Dvorak/Modern style
 icon: card-sample.png
 position hint: 003
 
-version: 2014-4-12
-depends on: dvorak.mse-game 2014-4-12
-depends on: dvorak-none.mse-symbol-font 2014-4-12
+version: 2016-01-30
+depends on: dvorak.mse-game 2016-01-30
+depends on: dvorak-none.mse-symbol-font 2016-01-30
 
 card background: white
 card width: 750
