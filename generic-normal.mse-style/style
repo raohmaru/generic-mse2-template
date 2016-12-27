@@ -39,7 +39,7 @@ init script:
 		else    670 - card_style.value.content_width
 	}	
 	value_width := {
-		if card.value != "" then min(card_style.value.content_width + 22, VALUE_HEIGHT)
+		if card.value != "" then max(card_style.value.content_width + 22, 66)
 	}
 	value_height := {
 		if styling.layout != "name, image, type" and value_fsz() > 30 then
