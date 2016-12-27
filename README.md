@@ -37,6 +37,7 @@ To apply any change made in the advanced config field you need to Reload Data (C
 + Define color for cards of a given type:  
   `type_of_card: color`  
   where `color` could be a rgb value or a [named color](http://docs.wxwidgets.org/2.8.0/wx_wxcolourdatabase.html).  
+  
   ```
   Thing: rgb(55,0,255)
   Thing Weapon: rgb(0,0,0)
