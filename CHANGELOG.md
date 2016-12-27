@@ -1,5 +1,8 @@
 # Changelog Generic Card Template for MSE2
-### v2016-12-27
+### v1.2.0
 + Advanced config field.
-### v2016-01-30
+### v1.1.0
++ Change template name to Generic.
++ Added makefile.
+### v1.0.0
 + Public release.
