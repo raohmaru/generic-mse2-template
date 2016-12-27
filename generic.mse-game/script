@@ -1,7 +1,7 @@
-﻿############################################################## Localization
-
+﻿include file: utils
 include file: language
 
+############################################################## Localization
 lang  := language()
 
 ############################################################## Functions & filters
@@ -204,4 +204,12 @@ card_number := {
 		order_by: { card_order_by() }
 		#filter: set_filter()
 	) + 1
+}
+
+
+############################################################## Card color
+card_color := {
+	if not is_nil(advcfg) then
+		advcfg_get(trim(remove_tags(card.super_type + " " + card.sub_type)), def: input)
+	else input
 }

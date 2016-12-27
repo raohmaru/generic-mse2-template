@@ -7,7 +7,7 @@ icon: card-sample.png
 position hint: 003
 
 version: 2016-01-30
-depends on: generic.mse-game 2016-01-30
+depends on: generic.mse-game 2016-12-27
 depends on: generic-none.mse-symbol-font 2016-01-30
 
 card background: white
@@ -26,21 +26,12 @@ init script:
 		if input == "" then default
 		else to_number(input) or else default
 	}
-	name_fsz      := to_number_or_def@(styling.name_font_size, default:34)
-	value_fsz     := to_number_or_def@(styling.value_font_size, default:30)
-	type_fsz      := to_number_or_def@(styling.type_font_size, default:20)
-	text_fsz      := to_number_or_def@(styling.text_font_size, default:24)
-	copyright_fsz := to_number_or_def@(styling.copyright_font_size, default:12)
-	image_height  := to_number_or_def@(styling.image_height, default:450)
-	
-	math_min := {
-		if value1 > value2 then value1
-		else value2
-	}
-	math_max := {
-		if value1 < value2 then value1
-		else value2
-	}
+	name_fsz      := to_number_or_def@(styling.name_font_size,      default: 34)
+	value_fsz     := to_number_or_def@(styling.value_font_size,     default: 30)
+	type_fsz      := to_number_or_def@(styling.type_font_size,      default: 20)
+	text_fsz      := to_number_or_def@(styling.text_font_size,      default: 24)
+	copyright_fsz := to_number_or_def@(styling.copyright_font_size, default: 12)
+	image_height  := to_number_or_def@(styling.image_height,        default: 450)
 	
 	name_width := {
 		if      card.value == "" or input == "center" then 700
@@ -48,11 +39,11 @@ init script:
 		else    670 - card_style.value.content_width
 	}	
 	value_width := {
-		if card.value != "" then math_min(value1:card_style.value.content_width + 22, value2:VALUE_HEIGHT)
+		if card.value != "" then min(card_style.value.content_width + 22, VALUE_HEIGHT)
 	}
 	value_height := {
 		if styling.layout != "name, image, type" and value_fsz() > 30 then
-			math_max(value1:value_fsz()+20, value2:110) + input - 50
+			max(value_fsz()+20, 110) + input - 50
 		else input
 	}
 	
@@ -406,7 +397,7 @@ card style:
 	value:
 		right: 692
 		top: 58
-		width: {math_min(value1:50, value2:card_style.value.content_width+6)}
+		width: {min(50, card_style.value.content_width+6)}
 		height: {value_height(50)}
 		z index: 2
 		padding right: {if card_style.value.content_width <= VALUE_HEIGHT then 0 else 4}

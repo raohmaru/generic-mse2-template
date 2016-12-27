@@ -25,6 +25,7 @@ card field:
 		color: rgb(29,129,86)
 	show statistics: false
 	description: The color of the card
+	script: card_color(value)
 
 ############################# Name line
 card field:

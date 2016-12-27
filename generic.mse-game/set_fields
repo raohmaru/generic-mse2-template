@@ -98,6 +98,12 @@ set field:
 	name: Extended Card Info
 	initial: no
 	description: Show set code, set language with card number and set symbol
+	
+set field:
+	type: text
+	name: advanced config
+	multi line: true
+	description: Save and Reload Data (Ctrl+F5) after modifying this field to apply the changes.
 
 ############################# Default style
 
