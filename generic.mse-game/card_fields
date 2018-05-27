@@ -100,6 +100,7 @@ card field:
 	name: symbol
 	choice: normal
 	choice: inverted
+	initial: inverted
 	show statistics: false
 	choice colors:
 		normal: rgb(33,33,33)
@@ -110,7 +111,7 @@ card field:
 card field:
 	type: text
 	name: number
-	script: set.code + "-" + set.language + card_number()
+	script: card_id()
 	card list visible: true
 	card list name: #
 	card list column: 4

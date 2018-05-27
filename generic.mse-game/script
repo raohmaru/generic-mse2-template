@@ -190,11 +190,8 @@ card_order_by := {
 	)
 }
 
-set_filter := {	
-	if lang.is_coretype(to_text(card.super_type)) then
-		{ lang.is_coretype(to_text(card.super_type)) }		
-	else
-		{ not lang.is_coretype(to_text(card.super_type)) }
+set_filter := {
+	{ lang.is_coretype(to_text(card.super_type)) }
 }
 
 card_number := {
@@ -202,8 +199,24 @@ card_number := {
 		of: card
 		in: set
 		order_by: { card_order_by() }
-		#filter: set_filter()
+		filter: set_filter()
 	) + 1
+}
+
+card_count := {
+	number_of_items(in: set, filter: set_filter())
+}
+
+card_id := {
+	tokens := [
+		S: set.code,
+		L: set.language,
+		N: card_number(),
+		T: card_count()
+	]
+	(for each part in break_text(match: ".", set.numbering) do
+		tokens[part] or else part
+	)
 }
 
 

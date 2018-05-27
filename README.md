@@ -9,7 +9,7 @@ to create a rapid prototype of their game.
 Firstly, you need to create a new MSE2 set with game type "Generic" and card style "Normal".
 
 In the **Style** tab (key F7) you can customize the aspect of the card. Every option shows a help
-text on the left of the status bar when you pass over that option with the cursor.
+text on the left of the status bar (at the bottom of the window) when you pass over that option with the cursor.
 
 To show card number, set symbol and copyright stuff go to the **Set info** tab (F6), fill in the
 fields and set the option "Extended Card Info" to "Yes".
@@ -23,6 +23,16 @@ you can use an exisitng symbol font from any other MSE2 template. Simply go to t
 your MSE2 installation, copy a folder with the extension `.mse-symbol-font` and rename it to
 `generic-[fontname].mse-symbol-font` (where "[fontname]" is the name of the font). Reload MSE2 and
 the new symbol font will appear in the Symbol Font options of the Style tab.
+
+### Card numbering
+The text show in the card number can be also customized. Just go the **Set info** tab (F6) and write the
+text of your choice.
+
+Available tokens (they will be replaced with set or card properties):
+- S (set code)
+- L (set language)
+- N (card number)
+- T (total of cards in set)
 
 ### Advanced config
 In the **Set info** tab there is a multi-line field where complex settings can be added. You can

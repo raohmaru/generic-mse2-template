@@ -21,11 +21,11 @@ is_nil := {
 	to_code(input) == ""
 }
 
-## Parses a multi line string of config values
+## Parses a multi line string of pairs of key/values
  # key1: value1
  # key2: value2
-advcfg_parse := {
-	lines := split_lines(set.advanced_config)
+parse_kvs := {
+	lines := split_lines(input)
 	for each line in lines do (
 		tuple := split_colon(line)
 		if length(tuple) == 2 then (
@@ -35,7 +35,7 @@ advcfg_parse := {
 		)
 	)
 }
-advcfg := advcfg_parse()
+advcfg := parse_kvs(set.advanced_config)
 
 ## Gets a config value for the given key
 advcfg_position := position@(in: advcfg)

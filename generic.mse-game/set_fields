@@ -39,12 +39,12 @@ set field:
 set field:
 	type: text
 	name: language
-	description: Language code. Recommended 2 - 3 Captital digits.
+	description: Language code. Recommended 2 - 3 Capital digits.
 
 set field:
 	type: text
 	name: date
-	description: Date
+	description: Date of creation
 
 set field:
 	type: text
@@ -98,6 +98,12 @@ set field:
 	name: Extended Card Info
 	initial: no
 	description: Show set code, set language with card number and set symbol
+
+set field:
+	type: text
+	name: numbering
+	default: "{S} - {L} {N}/{T}"
+	description: Card numbering. Available tokens: S (set code), L (language), N (card number), T (total of cards in set)
 	
 set field:
 	type: text

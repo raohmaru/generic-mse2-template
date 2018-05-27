@@ -65,7 +65,7 @@ init script:
 		else " " + styling.text_align
 	}
 	
-	image_top := {
+	image_top:= {
 		if styling.layout == "name, image, type" then 134
 		else if styling.layout == "name, text, image" then (
 			(if set.Extended_Card_Info then 972 else 992)
@@ -74,7 +74,7 @@ init script:
 		else 190
 	}
 	
-	text_top := {
+	text_top:= {
 		if styling.layout == "name, text, image" then 190 + input - TEXT_BOX_OFFSET_Y
 		else
 			image_top() + image_height() + input -
@@ -378,7 +378,7 @@ card style:
 	############################# Name line
 	name:
 		left:   53
-		top :   50
+		top:   50
 		right:  {name_width(styling.name_align)}
 		height: {VALUE_HEIGHT}
 		alignment: script: name_alignment()
@@ -422,7 +422,7 @@ card style:
 	############################# Text box	
 	type:
 		left: {if set.Extended_Card_Info and styling.layout == "name, image, type" then 100 else 53}
-		top : {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 135}
+		top: {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 135}
 		height: 45
 		right: {if set.Extended_Card_Info and styling.layout == "name, image, type" then 650 else name_width(styling.type_align)}
 		z index: 2
@@ -434,7 +434,7 @@ card style:
 			
 	text:
 		left: 78
-		top : {text_top(83)}
+		top: {text_top(83)}
 		right:  672
 		bottom: {text_bottom(0)}
 		alignment: script: text_alignment()
@@ -442,7 +442,7 @@ card style:
 		font:
 			name: {styling.text_font}
 			size: {text_fsz()}
-			#scale down to: {text_fsz()-4}
+			scale down to: {text_fsz()-4}
 			color: {styling.text_color}
 		symbol font:
 			name: {styling.text_symbol_font}
@@ -455,7 +455,7 @@ card style:
 	
 	############################# Symbol & Edition and Card ID	
 	symbol:
-		top : {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 976}
+		top: {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 976}
 		left: 53
 		width: {if styling.layout == "name, image, type" then 42 else 36}
 		height: {if styling.layout == "name, image, type" then 42 else 36}
@@ -469,7 +469,7 @@ card style:
 		visible: {set.Extended_Card_Info}
 			
 	number:
-		top : {if styling.layout == "name, text, image" then image_top() - 17 else image_top() + image_height() + (if styling.layout == "name, image, type" then 4 else 2)}
+		top: {if styling.layout == "name, text, image" then image_top() - 17 else image_top() + image_height() + (if styling.layout == "name, image, type" then 4 else 2)}
 		right: 697
 		width: 120
 		height: 20
@@ -484,7 +484,7 @@ card style:
 	############################# Copyright stuff
 	gamecode:
 		left: {if styling.layout == "name, image, type" then 53 else 99}
-		top : 980
+		top: 980
 		width: {if styling.layout == "name, image, type" then 318 else 256}
 		height: 22
 		alignment: left middle shrink-overflow
@@ -621,7 +621,7 @@ extra card style:
 	
 	text solid box:
 		left: 53
-		top : {text_top(TEXT_BOX_OFFSET_Y)}
+		top: {text_top(TEXT_BOX_OFFSET_Y)}
 		right:  697
 		bottom: {text_bottom(25)}
 		z index: -1
@@ -629,7 +629,7 @@ extra card style:
 	
 	text border box:
 		left: 53
-		top : {text_top(TEXT_BOX_OFFSET_Y)}
+		top: {text_top(TEXT_BOX_OFFSET_Y)}
 		right:  697
 		bottom: {text_bottom(25)}
 		left width:   3
@@ -641,7 +641,7 @@ extra card style:
 	
 	value solid box:
 		right: 700
-		top : 50
+		top: 50
 		width: {value_width()}
 		height: {value_height(VALUE_HEIGHT)}
 		z index: -1
@@ -649,7 +649,7 @@ extra card style:
 	
 	value border box:
 		right: 700
-		top : 50
+		top: 50
 		width: {value_width()}
 		height: {value_height(VALUE_HEIGHT)}
 		left width:   3
