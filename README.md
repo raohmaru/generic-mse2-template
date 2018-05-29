@@ -3,7 +3,7 @@ A [Magic Set Editor 2](http://magicseteditor.sourceforge.net/) (MSE2) template t
 cards for card games. It's intended to be a "generic" template for card game developers that need
 to create a rapid prototype of their game.
 
-<img src="http://s12.postimg.org/gwxac9z71/Generic_Guy_1.jpg" width="300" alt="Generic Guy card"> <img src="http://s22.postimg.org/a0iomoy0x/Challenge_accepted.jpg" width="300" alt="Challenge Accepted card">
+<img src="https://i.imgur.com/Zoe9aJN.jpg" width="250" alt="Challenge Accepted card"> <img src="https://i.imgur.com/vm956M1.jpg" width="250" alt="Desert Walk card"> <img src="https://i.imgur.com/fOddGKX.jpg" width="250" alt="Lost Missile card">
 
 ## How to use
 Firstly, you need to create a new MSE2 set with game type "Generic" and card style "Normal".
