@@ -44,9 +44,9 @@ key2: value2
 To apply any change made in the advanced config field you need to Reload Data (Ctrl+F5).
 
 #### Available settings
-+ Define color for cards of a given type:  
++ Define default color for cards of a given type:  
   `type_of_card: color`  
-  where `color` could be a rgb value or a [named color](http://docs.wxwidgets.org/2.8.0/wx_wxcolourdatabase.html).  
+  where `color` could be a [rgb value](https://rgbcolorcode.com/) or a [named color](http://docs.wxwidgets.org/2.8.0/wx_wxcolourdatabase.html).  
   
   ```
   Thing: rgb(55,0,255)
