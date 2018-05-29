@@ -26,12 +26,12 @@ init script:
 		if input == "" then default
 		else to_number(input) or else default
 	}
-	name_fsz      := to_number_or_def@(styling.name_font_size,      default: 34)
-	value_fsz     := to_number_or_def@(styling.value_font_size,     default: 30)
-	type_fsz      := to_number_or_def@(styling.type_font_size,      default: 20)
-	text_fsz      := to_number_or_def@(styling.text_font_size,      default: 24)
-	copyright_fsz := to_number_or_def@(styling.copyright_font_size, default: 12)
-	image_height  := to_number_or_def@(styling.image_height,        default: 450)
+	name_fsz      := { to_number_or_def(styling.name_font_size,      default: 34) }
+	value_fsz     := { to_number_or_def(styling.value_font_size,     default: 30) }
+	type_fsz      := { to_number_or_def(styling.type_font_size,      default: 20) }
+	text_fsz      := { to_number_or_def(styling.text_font_size,      default: 24) }
+	copyright_fsz := { to_number_or_def(styling.copyright_font_size, default: 12) }
+	image_height  := { to_number_or_def(styling.image_height,        default: 450) }
 	
 	name_width := {
 		if      card.value == "" or input == "center" then 700

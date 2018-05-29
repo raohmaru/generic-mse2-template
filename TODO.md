@@ -3,3 +3,9 @@
 - [ ] Add more colors to the bg color list, or use a list of tokens.
 - [ ] Allow gradients in bg.
 - [ ] Bg images .mse-include
+- [ ] Rarity
+- [ ] Card number font size
+- [ ] Text box solid + border
+- [ ] Value box solid + border
+- [ ] Copyright text color
+- [ ] Card number text color
