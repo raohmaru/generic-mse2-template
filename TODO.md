@@ -1,11 +1,13 @@
 # TODO List Generic Card Template for MSE2
-- [ ] Change color of text element individually.
+- [X] Change color of text element individually.
+- [X] Copyright text color
+- [X] Card number text color
 - [ ] Add more colors to the bg color list, or use a list of tokens.
 - [ ] Allow gradients in bg.
 - [ ] Bg images .mse-include
 - [ ] Rarity
 - [ ] Card number font size
-- [ ] Text box solid + border
-- [ ] Value box solid + border
-- [ ] Copyright text color
-- [ ] Card number text color
+- [ ] Rounded boxes
+- [ ] Boxes border size
+- [ ] Card border size
+- [ ] Custom Rules / Flavour separator

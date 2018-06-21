@@ -106,70 +106,136 @@ set info style:
 
 ############################################################## Extra style options
 ############################# Typography
+############# Name
 styling field:
 	type: text
 	name: name font
-	description: A valid font name installed in your system used for the card name. E.g. Arial Black
+	description: A valid font name installed in your system used for the card name. E.g. Arial Black.
 	
 styling field:
 	type: text
 	name: name font size
-	description: Font size for the card name. Default is 34
+	description: Font size for the card name. Default is 34.
+	
+styling field:
+	type: color
+	name: name color
+	description: Colour of the card name.
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
 
+############# Corner Value
 styling field:
 	type: text
 	name: value font
-	description: A valid font name installed in your system used for the corner value. E.g. Wingdings
+	description: A valid font name installed in your system used for the corner value. E.g. Wingdings.
 	
 styling field:
 	type: package choice
 	name: value symbol font
 	match: generic-*.mse-symbol-font
 	initial: generic-none.mse-symbol-font
-	description: Symbol font size for the corner value
+	description: Symbol font size for the corner value.
 	
 styling field:
 	type: text
 	name: value font size
-	description: Font size for the corner value. Default is 30
+	description: Font size for the corner value. Default is 30.
 
+styling field:
+	type: color
+	name: value color
+	description: Colour of the corner value.
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+
+############# Type
 styling field:
 	type: text
 	name: type font
-	description: A valid font name installed in your system used for the card type. E.g. Verdana
+	description: A valid font name installed in your system used for the card type. E.g. Verdana.
 	
 styling field:
 	type: text
 	name: type font size
-	description: Font size for the card type. Default is 20
+	description: Font size for the card type. Default is 20.
 
+styling field:
+	type: color
+	name: type color
+	description: Colour of the card type.
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+
+############# Rules and flavour
 styling field:
 	type: text
 	name: text font
-	description: A valid font name installed in your system used for the card text E.g. Times New Roman
+	description: A valid font name installed in your system used for the card rules E.g. Times New Roman.
 	
 styling field:
 	type: package choice
 	name: text symbol font
 	match: generic-*.mse-symbol-font
 	initial: generic-none.mse-symbol-font
-	description: Symbol font size for the card text
+	description: Symbol font size for the card text.
 	
 styling field:
 	type: text
 	name: text font size
-	description: Font size for the card text. Default is 24
+	description: Font size for the card text. Default is 24.
 
+styling field:
+	type: color
+	name: text color
+	description: Colour for the card rules and flavour text
+	initial: rgb(0,0,0)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
+
+############# Number, copyright and gamecode
 styling field:
 	type: text
 	name: copyright font
-	description: A valid font name installed in your system used for the copyright text E.g. Tahoma
+	description: A valid font name installed in your system used for the copyright text E.g. Tahoma.
 	
 styling field:
 	type: text
 	name: copyright font size
-	description: Font size for the copyright text. Default is 12
+	description: Font size for the copyright text. Default is 12.
+
+styling field:
+	type: color
+	name: copyright color
+	description: Colour for the card number and copyright
+	initial: rgb(255,255,255)
+	choice:
+		name: black
+		color: rgb(0,0,0)
+	choice:
+		name: white
+		color: rgb(255,255,255)
 	
+#############################
 styling field:
 	type: info
 	name: Divider
@@ -178,7 +244,7 @@ styling field:
 styling field:
 	type: choice
 	name: name align
-	description: Horizontal alignment of the name ("center if no corner value" means align to left if card has a value defined)
+	description: Horizontal alignment of the name ("center if no corner value" means align to left if card has a value defined).
 	choice: left
 	choice: center
 	choice: center if no corner value
@@ -188,7 +254,7 @@ styling field:
 styling field:
 	type: choice
 	name: type align
-	description: Horizontal alignment of the card type
+	description: Horizontal alignment of the card type.
 	choice: left
 	choice: center
 	choice: right
@@ -197,7 +263,7 @@ styling field:
 styling field:
 	type: choice
 	name: text align
-	description: Horizontal alignment of the rule text (center short text only means only on one-line cards with no flavor text)
+	description: Horizontal alignment of the rule text (center short text only means only on one-line cards with no flavor text).
 	choice: left
 	choice: center
 	choice: center short text
@@ -207,54 +273,17 @@ styling field:
 styling field:
 	type: choice
 	name: text vertical align
-	description: Vertical alignment of the rule text
+	description: Vertical alignment of the rule text.
 	choice: top
 	choice: middle
 	choice: bottom
 	initial: middle
-
-############################# Colors
-styling field:
-	type: color
-	name: font color
-	description: What colour should be used for the text?
-	initial: rgb(255,255,255)
-	choice:
-		name: black
-		color: rgb(0,0,0)
-	choice:
-		name: white
-		color: rgb(255,255,255)
-
-styling field:
-	type: color
-	name: text color
-	description: What colour should be used for the card rules?
-	initial: rgb(255,255,255)
-	choice:
-		name: black
-		color: rgb(0,0,0)
-	choice:
-		name: white
-		color: rgb(255,255,255)
-
-styling field:
-	type: color
-	name: value color
-	description: What colour should be used for the corner value?
-	initial: rgb(255,255,255)
-	choice:
-		name: black
-		color: rgb(0,0,0)
-	choice:
-		name: white
-		color: rgb(255,255,255)
 		
 ############################# Boxes
 styling field:
 	type: choice
 	name: text box
-	description: Show a box below the rule text
+	description: Show a box below the rule text.
 	initial: none
 	choice: none
 	choice: solid box
@@ -263,12 +292,13 @@ styling field:
 styling field:
 	type: choice
 	name: value box
-	description: Show a box below the corner value
+	description: Show a box below the corner value.
 	initial: none
 	choice: none
 	choice: solid box
 	choice: border box
-	
+
+#############################	
 styling field:
 	type: info
 	name: Divider
@@ -277,7 +307,7 @@ styling field:
 styling field:
 	type: choice
 	name: layout
-	description: Change the layout of the card
+	description: Change the layout of the card.
 	initial: name, image, type
 	choice: name, type, image
 	choice: name, image, type
@@ -286,30 +316,30 @@ styling field:
 styling field:
 	type: text
 	name: image height
-	description: Set the height of the image in pixels. Default is 450
+	description: Set the height of the image in pixels. Default is 450.
 
 styling field:
 	type: boolean
 	name: image border
-	description: Show a border around the image
+	description: Show a border around the image.
 	initial: no
 
 styling field:
 	type: boolean
 	name: background image
-	description: Use a background image instead of a solid color
+	description: Use a background image instead of a solid color.
 	initial: no
 
 styling field:
 	type: boolean
 	name: show border
-	description: Show card border
+	description: Show card border.
 	initial: no
 			
 styling field:
 	type: package choice
 	name: overlay
-	description: Should there be an overlay applied, such as foil?
+	description: Should there be an overlay applied, such as foil?.
 	match: generic-overlay-*.mse-include
 	required: false
 
@@ -386,7 +416,7 @@ card style:
 		font:
 			name: {styling.name_font}
 			size: {name_fsz()}
-			color: {styling.font_color}
+			color: {styling.name_color}
 			weight: bold
 		line height soft: 0.8
 		line height hard: 0.8
@@ -430,7 +460,7 @@ card style:
 		font:
 			name: {styling.type_font}
 			size: {type_fsz()}
-			color: {styling.font_color}
+			color: {styling.type_color}
 			
 	text:
 		left: 78
@@ -469,7 +499,7 @@ card style:
 		visible: {set.Extended_Card_Info}
 			
 	number:
-		top: {if styling.layout == "name, text, image" then image_top() - 17 else image_top() + image_height() + (if styling.layout == "name, image, type" then 4 else 2)}
+		top: {if styling.layout == "name, text, image" then image_top() - 18 else image_top() + image_height() + (if styling.layout == "name, image, type" then 4 else 0)}
 		right: 697
 		width: 120
 		height: 20
@@ -478,7 +508,7 @@ card style:
 		font:
 			name: {styling.copyright_font}
 			size: 11
-			color: {styling.font_color}
+			color: {styling.copyright_color}
 		visible: {set.Extended_Card_Info}
 	
 	############################# Copyright stuff
@@ -492,7 +522,7 @@ card style:
 		font:
 			name: {styling.copyright_font}
 			size: {copyright_fsz()}
-			color: {styling.font_color}
+			color: {styling.copyright_color}
 		visible: {set.Extended_Card_Info}
 	
 	copyright:
@@ -505,7 +535,7 @@ card style:
 		font: 
 			name: {styling.copyright_font}
 			size: {copyright_fsz()}
-			color: {styling.font_color}
+			color: {styling.copyright_color}
 		visible: {set.Extended_Card_Info}
 
 ############################################################## Extra card fields
@@ -514,7 +544,7 @@ extra card field:
 	name: bg image
 	show statistics: false
 	save value: true
-	description: Double click to set a backround image
+	description: Double click to set a background image.
 	
 extra card field:
 	type: color
@@ -532,7 +562,7 @@ extra card field:
 		color: rgb(200,180,0)
 	show statistics: false
 	save value: true
-	description: Border color 
+	description: Border color .
 	
 extra card field:
 	type: color
@@ -543,7 +573,7 @@ extra card field:
 		color: rgb(0,0,0)
 	show statistics: false
 	save value: true
-	description: Click to change the text background color
+	description: Click to change the text background color.
 	
 extra card field:
 	type: color
@@ -554,7 +584,7 @@ extra card field:
 		color: rgb(0,0,0)
 	show statistics: false
 	save value: true
-	description: Click to change the border color of the text box
+	description: Click to change the border color of the text box.
 	
 extra card field:
 	type: color
@@ -565,7 +595,7 @@ extra card field:
 		color: rgb(0,0,0)
 	show statistics: false
 	save value: true
-	description: Click to change the value background color
+	description: Click to change the value background color.
 	
 extra card field:
 	type: color
@@ -576,7 +606,7 @@ extra card field:
 		color: rgb(0,0,0)
 	show statistics: false
 	save value: true
-	description: Click to change the border color of the value box
+	description: Click to change the border color of the value box.
 	
 extra card field:
 	type: color
@@ -587,7 +617,7 @@ extra card field:
 		color: rgb(255,255,255)
 	show statistics: false
 	save value: true
-	description: Click to change the border color of the image
+	description: Click to change the border color of the image.
 	
 extra card field:
 	type: choice
