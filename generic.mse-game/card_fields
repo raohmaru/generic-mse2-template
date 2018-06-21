@@ -99,12 +99,18 @@ card field:
 	type: choice
 	name: symbol
 	choice: normal
-	choice: inverted
-	initial: inverted
+	choice: uncommon
+	choice: rare
+	choice: mythic rare
+	choice: special
+	initial: normal
 	show statistics: false
 	choice colors:
-		normal: rgb(33,33,33)
-		inverted: rgb(224,224,224)
+		normal:      rgb(33,  33,  33)
+		uncommon:    rgb(224, 224, 224)
+		rare:        rgb(255, 207, 52)
+		mythic rare: rgb(202, 49,  35)
+		special:     rgb(190, 0,   255)
 	description: The symbol of the set, to edit the symbol switch to the 'set info' tab
 
 ############################# Edition and Card ID

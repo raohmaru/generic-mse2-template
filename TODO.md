@@ -2,12 +2,12 @@
 - [X] Change color of text element individually.
 - [X] Copyright text color
 - [X] Card number text color
+- [X] Rarity
 - [ ] Add more colors to the bg color list, or use a list of tokens.
 - [ ] Allow gradients in bg.
 - [ ] Bg images .mse-include
-- [ ] Rarity
-- [ ] Card number font size
-- [ ] Rounded boxes
-- [ ] Boxes border size
-- [ ] Card border size
 - [ ] Custom Rules / Flavour separator
+- [ ] Card number font size
+- [ ] ~~Rounded boxes~~
+- [ ] ~~Boxes border size~~
+- [ ] ~~Card border size~~

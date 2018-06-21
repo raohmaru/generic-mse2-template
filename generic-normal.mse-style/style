@@ -100,6 +100,43 @@ set info style:
 			fill type: solid
 			fill color:   rgb(0,0,0)
 			border color: rgba(255,255,255,0)
+			
+		variation:
+			name: uncommon
+			border radius: 0.07
+			fill type: linear gradient
+			fill color 1:   rgb(224,224,224)
+			fill color 2:   rgb(84, 84, 84)
+			border color 1: rgb(0,  0,  0)
+			border color 2: rgb(0,  0,  0)
+			
+		variation:
+			name: rare
+			border radius: 0.07
+			fill type: linear gradient
+			fill color 1:   rgb(214,196,94)
+			fill color 2:   rgb(95, 84, 40)
+			border color 1: rgb(0,  0,  0)
+			border color 2: rgb(0,  0,  0)
+			
+		variation:
+			name: mythic rare
+			border radius: 0.07
+			fill type: linear gradient
+			fill color 1:   rgb(245,148,31)
+			fill color 2:   rgb(186,45,38)
+			border color 1: rgb(0,  0,  0)
+			border color 2: rgb(0,  0,  0)
+			
+		variation:
+			name: special
+			border radius: 0.10
+			fill type: linear gradient
+			fill color 1:   rgb(224,170,247)
+			fill color 2:   rgb(58,7,80)
+			border color 1: rgb(255,255,255)
+			border color 2: rgb(255,255,255)
+			
 		variation:
 			name: inverted
 			border radius: 0.08
@@ -329,6 +366,12 @@ styling field:
 
 styling field:
 	type: boolean
+	name: inverted common symbol
+	description: Should the common rarity symbol be inverted?
+	initial: no
+	
+styling field:
+	type: boolean
 	name: background image
 	description: Use a background image instead of a solid color.
 	initial: no
@@ -405,7 +448,6 @@ card style:
 		top: 0
 		width:	750
 		height:	1046
-		#radius: 24
 		z index: -2
 	
 	############################# Name line
@@ -475,7 +517,7 @@ card style:
 		font:
 			name: {styling.text_font}
 			size: {text_fsz()}
-			scale down to: {text_fsz()-4}
+			scale down to: 14
 			color: {styling.text_color}
 		symbol font:
 			name: {styling.text_symbol_font}
@@ -497,8 +539,14 @@ card style:
 		alignment: middle left
 		choice images:
 			# Images based on the set symbol
-			normal: script: symbol_variation(symbol: set.symbol, variation: "normal")
-			inverted: script: symbol_variation(symbol: set.symbol, variation: "inverted")
+			normal:      
+				script:
+					if styling.inverted_common_symbol then symbol_variation(symbol: set.symbol, variation: "inverted")
+					else symbol_variation(symbol: set.symbol, variation: "normal")
+			uncommon:    script: symbol_variation(symbol: set.symbol, variation: "uncommon")
+			rare:        script: symbol_variation(symbol: set.symbol, variation: "rare")
+			mythic rare: script: symbol_variation(symbol: set.symbol, variation: "mythic rare")
+			special:     script: symbol_variation(symbol: set.symbol, variation: "special")
 		visible: {set.Extended_Card_Info}
 			
 	number:
@@ -644,7 +692,6 @@ extra card style:
 		top: 0
 		width:	750
 		height:	1046
-		#radius: 24
 		left width:   24
 		right width:  24
 		top width:    24
