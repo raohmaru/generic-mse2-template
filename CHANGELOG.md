@@ -1,6 +1,8 @@
 # Changelog Generic Card Template for MSE2
 ### v1.4.0
 + Individual text color for each part of the card.
++ Fix right alignment of card type on layout "name, image, type".
++ Move card number to the bottom left of the card.
 ### v1.3.1
 + Fixed font size and image height won't apply as specific style option.
 ### v1.3.0

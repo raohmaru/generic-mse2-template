@@ -502,15 +502,15 @@ card style:
 		visible: {set.Extended_Card_Info}
 			
 	number:
-		top: {if styling.layout == L_NAME_TEXT_IMG then image_top() - 18 else image_top() + image_height() + (if styling.layout == L_NAME_IMG_TYPE then 4 else 0)}
-		right: 697
+		top: {if card.gamecode == "" then 980 else 1000}
+		left: {if styling.layout == L_NAME_IMG_TYPE then 53 else 99}
 		width: 120
 		height: 20
 		z index: 2
-		alignment: top right
+		alignment: top left
 		font:
 			name: {styling.copyright_font}
-			size: 11
+			size: 12
 			color: {styling.copyright_color}
 		visible: {set.Extended_Card_Info}
 	
