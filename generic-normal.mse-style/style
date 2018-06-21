@@ -21,6 +21,9 @@ init script:
 	# constants
 	VALUE_HEIGHT := 66
 	TEXT_BOX_OFFSET_Y := 58
+	L_NAME_IMG_TYPE := "name, image, type"
+	L_NAME_TEXT_IMG := "name, text, image"
+	L_NAME_TYPE_IMG := "name, type, image"
 
 	to_number_or_def := {
 		if input == "" then default
@@ -42,7 +45,7 @@ init script:
 		if card.value != "" then max(card_style.value.content_width + 22, 66)
 	}
 	value_height := {
-		if styling.layout != "name, image, type" and value_fsz() > 30 then
+		if styling.layout != L_NAME_IMG_TYPE and value_fsz() > 30 then
 			max(value_fsz()+20, 110) + input - 50
 		else input
 	}
@@ -66,8 +69,8 @@ init script:
 	}
 	
 	image_top:= {
-		if styling.layout == "name, image, type" then 134
-		else if styling.layout == "name, text, image" then (
+		if styling.layout == L_NAME_IMG_TYPE then 134
+		else if styling.layout == L_NAME_TEXT_IMG then (
 			(if set.Extended_Card_Info then 972 else 992)
 			- image_height()
 		)
@@ -75,13 +78,13 @@ init script:
 	}
 	
 	text_top:= {
-		if styling.layout == "name, text, image" then 190 + input - TEXT_BOX_OFFSET_Y
+		if styling.layout == L_NAME_TEXT_IMG then 190 + input - TEXT_BOX_OFFSET_Y
 		else
 			image_top() + image_height() + input -
-			(if styling.layout == "name, type, image" then 40)
+			(if styling.layout == L_NAME_TYPE_IMG then 40)
 	}
 	text_bottom := {
-		if styling.layout == "name, text, image" then
+		if styling.layout == L_NAME_TEXT_IMG then
 			image_top() + input - 44
 		else
 			(if set.Extended_Card_Info then 950 else 970) + input
@@ -451,10 +454,10 @@ card style:
 	
 	############################# Text box	
 	type:
-		left: {if set.Extended_Card_Info and styling.layout == "name, image, type" then 100 else 53}
-		top: {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 135}
+		left: {if set.Extended_Card_Info and styling.layout == L_NAME_IMG_TYPE then 100 else 53}
+		top: {if styling.layout == L_NAME_IMG_TYPE then image_top() + image_height() + 6 else 135}
 		height: 45
-		right: {if set.Extended_Card_Info and styling.layout == "name, image, type" then 650 else name_width(styling.type_align)}
+		right: {if set.Extended_Card_Info and styling.layout == L_NAME_IMG_TYPE then 697 else name_width(styling.type_align)}
 		z index: 2
 		alignment: {styling.type_align + " middle shrink-overflow"}
 		font:
@@ -485,10 +488,10 @@ card style:
 	
 	############################# Symbol & Edition and Card ID	
 	symbol:
-		top: {if styling.layout == "name, image, type" then image_top() + image_height() + 6 else 976}
+		top: {if styling.layout == L_NAME_IMG_TYPE then image_top() + image_height() + 6 else 976}
 		left: 53
-		width: {if styling.layout == "name, image, type" then 42 else 36}
-		height: {if styling.layout == "name, image, type" then 42 else 36}
+		width: {if styling.layout == L_NAME_IMG_TYPE then 42 else 36}
+		height: {if styling.layout == L_NAME_IMG_TYPE then 42 else 36}
 		z index: 1
 		render style: image
 		alignment: middle left
@@ -499,7 +502,7 @@ card style:
 		visible: {set.Extended_Card_Info}
 			
 	number:
-		top: {if styling.layout == "name, text, image" then image_top() - 18 else image_top() + image_height() + (if styling.layout == "name, image, type" then 4 else 0)}
+		top: {if styling.layout == L_NAME_TEXT_IMG then image_top() - 18 else image_top() + image_height() + (if styling.layout == L_NAME_IMG_TYPE then 4 else 0)}
 		right: 697
 		width: 120
 		height: 20
@@ -513,9 +516,9 @@ card style:
 	
 	############################# Copyright stuff
 	gamecode:
-		left: {if styling.layout == "name, image, type" then 53 else 99}
+		left: {if styling.layout == L_NAME_IMG_TYPE then 53 else 99}
 		top: 980
-		width: {if styling.layout == "name, image, type" then 318 else 256}
+		width: {if styling.layout == L_NAME_IMG_TYPE then 318 else 256}
 		height: 22
 		alignment: left middle shrink-overflow
 		z index: 2
