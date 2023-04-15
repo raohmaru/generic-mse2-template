@@ -34,13 +34,15 @@ init script:
 		if input == "" then default
 		else to_number(input) or else default
 	}
-	name_fsz      := { to_number_or_def(styling.name_font_size,      default: 34) }
-	value_fsz     := { to_number_or_def(styling.value_font_size,     default: 30) }
-	type_fsz      := { to_number_or_def(styling.type_font_size,      default: 20) }
-	text_fsz      := { to_number_or_def(styling.text_font_size,      default: 24) }
-	copyright_fsz := { to_number_or_def(styling.copyright_font_size, default: 12) }
-	image_height  := { to_number_or_def(styling.image_height,        default: 450) }
-	border_width  := { to_number_or_def(styling.border_width,        default: 24) }
+	name_fsz       := { to_number_or_def(styling.name_font_size,      default: 34) }
+	value_fsz      := { to_number_or_def(styling.value_font_size,     default: 30) }
+	type_fsz       := { to_number_or_def(styling.type_font_size,      default: 20) }
+	text_fsz       := { to_number_or_def(styling.text_font_size,      default: 24) }
+	copyright_fsz  := { to_number_or_def(styling.copyright_font_size, default: 12) }
+	image_height   := { to_number_or_def(styling.image_height,        default: 450) }
+	border_width   := { if styling.show_border then to_number_or_def(styling.border_width, default: 24) else 0 }
+	text_bd_width  := { to_number_or_def(styling.text_border_width,   default: 3) }
+	value_bd_width := { to_number_or_def(styling.value_border_width,  default: 3) }
 	
 	name_width := {
 		if      card.value == "" or input == "center" then 700
@@ -333,7 +335,11 @@ styling field:
 	initial: none
 	choice: none
 	choice: solid box
-	choice: border box
+    
+styling field:
+	type: text
+	name: text border width
+	description: The width of the border of the text box. Default is 3.
 
 styling field:
 	type: choice
@@ -342,7 +348,11 @@ styling field:
 	initial: none
 	choice: none
 	choice: solid box
-	choice: border box
+    
+styling field:
+	type: text
+	name: value border width
+	description: The width of the border of the value box. Default is 3.
 
 #############################	
 styling field:
@@ -436,13 +446,11 @@ styling style:
 		render style: both
 		choice images:
 			solid box:  /generic.mse-game/icons/box-solid.png
-			border box: /generic.mse-game/icons/box-border.png
 			
 	value box:
 		render style: both
 		choice images:
 			solid box:  /generic.mse-game/icons/box-solid.png
-			border box: /generic.mse-game/icons/box-border.png
 			
 	layout:
 		render style: both
@@ -519,10 +527,10 @@ card style:
 			color: {styling.type_color}
 			
 	text:
-		left: 78
-		top: {text_top(83)}
-		right:  672
-		bottom: {text_bottom(0)}
+		left: {78 + text_bd_width()}
+		top: {text_top(83) + text_bd_width()}
+		right:  {672 - text_bd_width()}
+		bottom: {text_bottom(0) - text_bd_width()}
 		alignment: script: text_alignment()
 		z index: 2
 		font:
@@ -707,11 +715,11 @@ extra card style:
 		visible: {styling.show_border}
 	
 	text solid box:
-		left: 53
-		top: {text_top(TEXT_BOX_OFFSET_Y)}
-		right:  697
-		bottom: {text_bottom(25)}
-		z index: -1
+		left: {53 + text_bd_width()}
+		top: {text_top(TEXT_BOX_OFFSET_Y) + text_bd_width()}
+		right:  {697 - text_bd_width()}
+		bottom: {text_bottom(25) - text_bd_width()}
+		z index: 0
 		visible: {styling.text_box == "solid box"}
 	
 	text border box:
@@ -719,19 +727,15 @@ extra card style:
 		top: {text_top(TEXT_BOX_OFFSET_Y)}
 		right:  697
 		bottom: {text_bottom(25)}
-		left width:   3
-		right width:  3
-		top width:    3
-		bottom width: 3
-		z index: 0
+		z index: -1
 		visible: {styling.text_box != "none"}
 	
 	value solid box:
-		right: 700
-		top: 50
-		width: {value_width()}
-		height: {value_height(VALUE_HEIGHT)}
-		z index: -1
+		right: {700 - value_bd_width()}
+		top: {50 + value_bd_width()}
+		width: {value_width() - value_bd_width() * 2}
+		height: {value_height(VALUE_HEIGHT) - value_bd_width() * 2}
+		z index: 0
 		visible: {card.value != "" and styling.value_box == "solid box"}
 	
 	value border box:
@@ -739,11 +743,7 @@ extra card style:
 		top: 50
 		width: {value_width()}
 		height: {value_height(VALUE_HEIGHT)}
-		left width:   3
-		right width:  3
-		top width:    3
-		bottom width: 3
-		z index: 0
+		z index: -1
 		visible: {card.value != "" and styling.value_box != "none"}
 	
 	image border:
