@@ -1,6 +1,6 @@
 # Generic Card Template for MSE2
 A [Magic Set Editor 2](http://magicseteditor.sourceforge.net/) (MSE2) template to create sets of
-cards for card games. It's intended to be a "generic" template for card game developers that need
+cards for card games. It's intended to be a generic template for card game developers that need
 to create a rapid prototype of their game.
 
 <img src="https://i.imgur.com/Zoe9aJN.jpg" width="250" alt="Challenge Accepted card"> <img src="https://i.imgur.com/vm956M1.jpg" width="250" alt="Desert Walk card"> <img src="https://i.imgur.com/fOddGKX.jpg" width="250" alt="Lost Missile card">
@@ -44,9 +44,10 @@ key2: value2
 To apply any change made in the advanced config field you need to Reload Data (Ctrl+F5).
 
 #### Available settings
-+ Define default color for cards of a given type:  
++ Define the default color for cards of a given type:  
   `type_of_card: color`  
-  where `color` could be a [rgb value](https://rgbcolorcode.com/) or a [named color](http://docs.wxwidgets.org/2.8.0/wx_wxcolourdatabase.html).  
+  where `type_of_card` is the type of the card without the long dash character (—) and
+  `color` could be a [rgb value](https://rgbcolorcode.com/) or a [named color](http://docs.wxwidgets.org/2.8.0/wx_wxcolourdatabase.html).  
   
   ```
   Thing: rgb(55,0,255)
