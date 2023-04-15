@@ -1,8 +1,11 @@
 # Changelog Generic Card Template for MSE2
 
 ### v1.5.0
-+ Add style option to change the width of the card border.
-+ Add style option to change the width of the border of the text and the corner value.
++ Add style options to change the width of the following:
+  + border of the card
+  + text box
+  + corner value
+  + image
 
 ### v1.4.0
 + Individual text color for each part of the card.
