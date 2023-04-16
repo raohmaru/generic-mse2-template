@@ -5,9 +5,9 @@
 - [X] Rarity
 - [X] Card border size
 - [x] Add more colors to the bg color list, or use a list of tokens
+- [x] Card number font size
 - [ ] Allow gradients in bg
 - [ ] Bg images .mse-include
 - [ ] Custom Rules / Flavour separator
-- [ ] Card number font size
 - [ ] ~~Rounded boxes~~
 - [ ] ~~Boxes border size~~

@@ -518,6 +518,7 @@ card style:
 		width: {645 - img_bd_width() * 2}
 		height:	{image_height() - img_bd_width() * 2}
 		z index: 1
+		visible: {image_height() > 0}
 	
 	############################# Text box	
 	type:
@@ -575,22 +576,22 @@ card style:
 		visible: {set.Extended_Card_Info}
 			
 	number:
-		top: {if card.gamecode == "" then 980 else 1000}
+		top: {if card.gamecode == "" then 980 else 996}
 		left: {if styling.layout == L_NAME_IMG_TYPE then 53 else 99}
 		width: 120
 		height: 20
 		z index: 2
-		alignment: top left
+		alignment: left middle
 		font:
 			name: {styling.copyright_font}
-			size: 12
+			size: {copyright_fsz()}
 			color: {styling.copyright_color}
 		visible: {set.Extended_Card_Info}
 	
 	############################# Copyright stuff
 	gamecode:
 		left: {if styling.layout == L_NAME_IMG_TYPE then 53 else 99}
-		top: 980
+		top: {if card.number != "" then 976 else 980}
 		width: {if styling.layout == L_NAME_IMG_TYPE then 318 else 256}
 		height: 22
 		alignment: left middle shrink-overflow
