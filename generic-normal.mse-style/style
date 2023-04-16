@@ -96,7 +96,7 @@ init script:
 		if styling.layout == L_NAME_TEXT_IMG then
 			image_top() + input - 44
 		else
-			(if set.Extended_Card_Info then 950 else 970) + input
+			(if set.Extended_Card_Info then 970 else 990) + input
 	}
 
 ############################################################## Set info fields
@@ -534,7 +534,7 @@ card style:
 			
 	text:
 		left: {78 + text_bd_width()}
-		top: {text_top(83) + text_bd_width()}
+		top: {text_top(60) + text_bd_width()}
 		right:  {672 - text_bd_width()}
 		bottom: {text_bottom(0) - text_bd_width()}
 		alignment: script: text_alignment()
@@ -724,7 +724,7 @@ extra card style:
 		left: {53 + text_bd_width()}
 		top: {text_top(TEXT_BOX_OFFSET_Y) + text_bd_width()}
 		right:  {697 - text_bd_width()}
-		bottom: {text_bottom(25) - text_bd_width()}
+		bottom: {text_bottom(5) - text_bd_width()}
 		z index: 0
 		visible: {styling.text_box == "solid box"}
 	
@@ -732,7 +732,7 @@ extra card style:
 		left: 53
 		top: {text_top(TEXT_BOX_OFFSET_Y)}
 		right:  697
-		bottom: {text_bottom(25)}
+		bottom: {text_bottom(5)}
 		z index: -1
 		visible: {styling.text_box != "none"}
 	
