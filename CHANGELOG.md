@@ -6,6 +6,8 @@
   + text box
   + corner value
   + image
++ Update color of cards.
++ Add card color for the type "Rule".
 
 ### v1.4.0
 + Individual text color for each part of the card.

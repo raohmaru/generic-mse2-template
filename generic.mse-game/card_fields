@@ -13,16 +13,19 @@ card field:
 card field:
 	type: color
 	name: color
-	default: rgb(180,180,180)
+	default: rgb(180, 180, 180)
 	choice:
 		name: Thing
-		color: rgb(34,103,206)
+		color: rgb(34, 103, 206)
 	choice:
 		name: Action
-		color: rgb(140,0,0)
+		color: rgb(168, 24, 0)
 	choice:
 		name: Reaction
-		color: rgb(29,129,86)
+		color: rgb(31, 143, 51)
+	choice:
+		name: Rule
+		color: rgb(139, 139, 139)
 	show statistics: false
 	description: The color of the card
 	script: card_color(value)
