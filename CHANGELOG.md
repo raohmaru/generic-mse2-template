@@ -1,5 +1,8 @@
 # Changelog Generic Card Template for MSE2
 
+### v1.6.0
++ Customize colors of the card list by card type.
++ Center type text when layout is "name, image, type".
 ### v1.5.0
 + Add style options to change the width of the following:
   + border of the card

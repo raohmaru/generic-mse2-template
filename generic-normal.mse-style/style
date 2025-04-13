@@ -525,7 +525,7 @@ card style:
 		left: {if set.Extended_Card_Info and styling.layout == L_NAME_IMG_TYPE then 100 else 53}
 		top: {if styling.layout == L_NAME_IMG_TYPE then image_top() + image_height() + 6 else 135}
 		height: 45
-		right: {if set.Extended_Card_Info and styling.layout == L_NAME_IMG_TYPE then 697 else name_width(styling.type_align)}
+		right: {if set.Extended_Card_Info and styling.layout == L_NAME_IMG_TYPE then 650 else name_width(styling.type_align)}
 		z index: 2
 		alignment: {styling.type_align + " middle shrink-overflow"}
 		font:
