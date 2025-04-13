@@ -10,11 +10,14 @@ split_colon       := split_text@(match: ":")
  # input: rgb(0,0,0)
  #        named color
 to_color2 := {
-	if match_rgb(input) then (
+	if match_rgb(to_code(input)) then (
 		comp := break_text_digit(input)
 		rgb(comp[0], comp[1], comp[2])
 	)
-	else to_color(input)
+	# type_name is not supported thought it is in the docs
+	# else if type_name == "string" then to_color(input)
+	else if position(of: [to_code(input)], in: [["<card>"], [false]]) == -1 then to_color(input)
+	else false
 }
 
 is_nil := {
@@ -30,7 +33,7 @@ parse_kvs := {
 		tuple := split_colon(line)
 		if length(tuple) == 2 then (
 			type := trim(tuple[0])
-			value := to_color2(trim(tuple[1]))
+			value := trim(tuple[1])
 			[[type], [value]]
 		)
 	)

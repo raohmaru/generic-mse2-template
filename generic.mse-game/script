@@ -223,6 +223,6 @@ card_id := {
 ############################################################## Card color
 card_color := {
 	if not is_nil(advcfg) then
-		advcfg_get(trim(remove_tags(card.super_type + " " + card.sub_type)), def: input)
+		to_color2(advcfg_get(trim(remove_tags(card.super_type + " " + card.sub_type)), def: input))
 	else input
 }

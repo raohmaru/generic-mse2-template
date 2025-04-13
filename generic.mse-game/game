@@ -28,7 +28,9 @@ include file: auto_replace
 ############################################################## Other stuff
 
 card list color script:
-	if      is_thing()    then rgb(0,0,255)
+	color := card_color(false)
+	if      color != false then color
+	else if is_thing()    then rgb(0,0,255)
 	else if is_action()   then rgb(215,0,0)
-	else if is_reaction() then rgb(0,195,0)
+	else if is_reaction() then rgb(0,125,0)
 	else                       rgb(0,0,0)
