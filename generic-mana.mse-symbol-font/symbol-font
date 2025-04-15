@@ -1,0 +1,50 @@
+﻿mse version: 2.0.0
+version: 2014-01-20
+short name: Mana
+installer group: Generic/Symbols/Mana
+position hint: 002
+icon: mana_r.png
+
+image font size: 135
+horizontal space: 2
+symbol:
+	code: T
+	image: mana_t.png
+symbol:
+	code: Q
+	image: mana_q.png
+symbol:
+	code: W
+	image: mana_w.png
+symbol:
+	code: U
+	image: mana_u.png
+symbol:
+	code: B
+	image: mana_b.png
+symbol:
+	code: R
+	image: mana_r.png
+symbol:
+	code: G
+	image: mana_g.png
+symbol:
+	code: S
+	image: mana_s.png
+symbol:
+	code: I
+	image: mana_infinite.png
+symbol:
+	image: mana_circle.png
+	code: [0-9]+(?!/[WUBRGSTQ2])|.
+	regex: yes
+	draw text: 0
+	text margin left:   .2
+	text margin right:  .2
+	text margin top:    -.14
+	text margin bottom: -.14
+	text font:
+		name: {styling.value_font}
+		size: 1
+		color: rgb(0,0,0)
+		max stretch: 0.57
